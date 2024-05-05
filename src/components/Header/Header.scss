@@ -1,0 +1,28 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/global' as*;
+.nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    padding-right: 2rem;
+    &__cont {
+        display: flex;
+        gap: 1rem;
+    }
+    &__logo {
+        height: 7rem;
+        width: 19rem;
+    }
+    &__link {
+        font-family: Helvetica, sans-serif;
+        text-decoration: none;
+        color: white;
+        align-self: center;
+        font-size: 1.25rem;
+    }
+    &__icon {
+        color: white;
+        align-self: center;
+    }
+}

@@ -1,0 +1,28 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/global' as*;
+.hero {
+    background-color: black;
+    position: relative;
+    &__header {
+        color: #fff;
+        padding-left: 4rem;
+        z-index: 1;
+        margin: 0;
+    }
+    &__slogan {
+        color: #fff;
+        padding-left: 4rem;
+        z-index: 1;
+    }
+    &__img {
+        width: 100%;
+        z-index: 0;
+    }
+    &__container {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 15rem;
+    }
+}

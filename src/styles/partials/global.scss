@@ -1,0 +1,59 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+*, 
+*::before,
+*::after {
+    box-sizing: border-box;
+  }
+  
+body {
+    margin: 0;
+}
+
+h1 {
+  font-family: Helvetica, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+  @include media(tablet,desktop) {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+h2 {
+  font-family: Helvetica, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  @include media(tablet,desktop) {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+h3, button {
+  font-family: Helvetica, sans-serif;
+  font-size: .8125rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  @include media(tablet,desktop) {
+    font-size: .875rem;
+    line-height: 1.375rem;
+  }
+}
+h4, Link {
+  font-family: Helvetica, sans-serif;
+  font-size: .6875rem;
+  font-weight: 600;
+  line-height: 1rem;
+  @include media(tablet,desktop) {
+    font-size: .75rem;
+    line-height: 1.125rem;
+  }
+}
+p {
+  font-family: Helvetica, sans-serif;
+}
+textarea {
+  font-family: Helvetica, sans-serif;
+}
