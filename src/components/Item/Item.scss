@@ -2,25 +2,31 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/global' as*;
 .item {
-    padding-left: 2rem;
-    border: solid 1px black;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
     display: flex;
     gap: 1rem;
-    &__img {
-        width: 40%;
-    }
+    position: relative;
+    width: 47%;
     &__cont {
         display: flex;
         flex-direction: column;
+        width: 45%;
     }
     &__add {
-        width: 14rem;
+        width: 100%;
+    }
+    &__img {
+        width: 200px;
+        height: 200px;
+        border-radius: 0.5rem;
     }
     &__buy {
-        width: 14rem;
+        width: 100%;
     }
     &__specials {
-        width: 14 rem;
+        width: 14rem;
         background-color: red;
         color: white;
     }

@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons/faCartShopping'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from 'react-router-dom'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass'
+import { faStore } from '@fortawesome/free-solid-svg-icons/faStore'
 import './Header.scss'
-const Header = () => {
+const Header = ({setOpenCart, openCart}) => {
     const navigate = useNavigate();
+    console.log(openCart);
   return (
     <nav className='nav'>
         <div className='nav__cont'>
@@ -15,9 +16,9 @@ const Header = () => {
             <Link to="/catalog" className='nav__link'>Catalog</Link>
         </div>
         <div className='nav__cont'> 
-            <FontAwesomeIcon icon={faMagnifyingGlass} className='nav__icon fa-2x'/>
-            <FontAwesomeIcon icon={faUser} className='nav__icon fa-2x'/>
-            <FontAwesomeIcon icon={faCartShopping} className='nav__icon fa-2x' onClick={() => navigate('/cart')}/>
+            <FontAwesomeIcon icon={faStore} className='nav__icon fa-2x' alt='Your Store'/>
+            <FontAwesomeIcon icon={faUser} className='nav__icon fa-2x' alt='Your Account'/>
+            <FontAwesomeIcon icon={faCartShopping} className='nav__icon fa-2x nav__icon--cart' alt='Your Cart' onClick={()=> setOpenCart(!openCart)}/>
         </div>
     </nav>
   )
