@@ -13,11 +13,11 @@ const FilterBar = () => {
             <button className='aside__btn aside__btn--search'>Search</button>
             <form className='aside__form'>
                 <label className='aside__form-label'>Type
-                    <select>
+                    <checkbox>
                         <option value="all">All</option>
                         <option value="womens">Womens</option>
                         <option value="mens">Mens</option>
-                    </select>
+                    </checkbox>
                 </label>
                 <label className='aside__form-label'>Brand
                     <select>

@@ -16,14 +16,16 @@
     }
     &__add {
         width: 100%;
+        background-color: dodgerblue;
     }
     &__img {
         width: 200px;
-        height: 200px;
+        height: 100%;
         border-radius: 0.5rem;
     }
     &__buy {
         width: 100%;
+        margin-top: 1rem;
     }
     &__specials {
         width: 14rem;
