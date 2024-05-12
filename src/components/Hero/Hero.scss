@@ -2,8 +2,12 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/global' as*;
 .hero {
-    background-color: black;
-    position: relative;
+    background: url('../../assets/images/c74906cf0f025b3c3578d942e24eca2a_original.jpg');
+    height: 32rem;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     &__header {
         color: #fff;
         padding-left: 4rem;
@@ -20,9 +24,8 @@
         z-index: 0;
     }
     &__container {
-        position: absolute;
         display: flex;
         flex-direction: column;
-        top: 15rem;
+        width: 50%;
     }
 }

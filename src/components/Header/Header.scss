@@ -31,6 +31,29 @@
                 visibility: visible;
             }
         }
+        &:hover {
+            color: turquoise;
+        }
+        &-cont {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            &:hover .nav__icon-text {
+                visibility: visible;
+                color: turquoise;
+            }
+        }
+        &-text {
+            font-family: Helvetica, sans-serif;
+            color: white;
+            align-self: center;
+            font-size: 1.25rem;
+            position: absolute;
+            bottom: 0;
+            visibility: hidden;
+        }
+        
     }
     position: fixed;
     top: 0;

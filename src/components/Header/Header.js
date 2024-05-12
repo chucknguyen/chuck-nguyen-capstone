@@ -16,9 +16,18 @@ const Header = ({setOpenCart, openCart}) => {
             <Link to="/catalog" className='nav__link'>Catalog</Link>
         </div>
         <div className='nav__cont'> 
+          <div className='nav__icon-cont'> 
             <FontAwesomeIcon icon={faStore} className='nav__icon fa-2x' alt='Your Store'/>
+            <p className='nav__icon-text'>Your Store</p>
+          </div>
+          <div className='nav__icon-cont'>
             <FontAwesomeIcon icon={faUser} className='nav__icon fa-2x' alt='Your Account'/>
+            <p className='nav__icon-text'>Your Account</p>
+          </div>
+          <div className='nav__icon-cont'>
             <FontAwesomeIcon icon={faCartShopping} className='nav__icon fa-2x nav__icon--cart' alt='Your Cart' onClick={()=> setOpenCart(!openCart)}/>
+            <p className='nav__icon-text'>Your Cart</p>
+          </div>
         </div>
     </nav>
   )

@@ -1,12 +1,55 @@
 import React from 'react'
 import './Item.scss'
 import axios from 'axios'
-const Item = ({item, query}) => {
-    const handleAddItem = async () => {
-        try {
-            axios.post("http://localhost:8080/cart", {item_name:item.item_name, price:item.price})
-        } catch (error) {
-            console.error(error);
+const Item = ({item, setCart}) => {
+    const handleAddItem = (e) => {
+        e.preventDefault();
+        const currentCart = JSON.parse(localStorage.getItem('cart'));
+        if (!currentCart) {
+            const cart = {
+                items: [
+                    {
+                        id: item.id,
+                        item_name: item.item_name,
+                        price: item.price,
+                        qty: 1,
+                        media: item.media
+                    }
+                ]
+            }
+            setCart(cart);
+        } else {
+            if (currentCart.items.find(cartItem => cartItem.id === item.id)) {
+                const cart = {
+                    ...currentCart,
+                    items: currentCart.items.map(cartItem => {
+                        if (cartItem.id === item.id) {
+                            return {
+                                ...cartItem,
+                                qty: cartItem.qty + 1
+                            }
+                        } else {
+                            return cartItem
+                        }
+                    })
+                }
+                setCart(cart);
+            }
+            else {
+                const cart = {
+                    items: [
+                        ...currentCart.items,
+                        {
+                            id: item.id,
+                            item_name: item.item_name,
+                            price: item.price,
+                            qty: 1,
+                            media: item.media
+                        }
+                    ]
+                }
+                setCart(cart);
+            }
         }
     }
     

@@ -1,7 +1,7 @@
 import React from 'react'
 import Hero from '../../components/Hero/Hero'
 import axios from 'axios'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Item from '../../components/Item/Item'
 import { useSearchParams } from 'react-router-dom'
 import FilterBar from '../../components/FilterBar/FilterBar'
@@ -11,8 +11,7 @@ import Header from '../../components/Header/Header'
 const HomePage = () => {
     const [catalog, setCatalog] = useState([]);
     const [openCart, setOpenCart] = useState(false);
-    const [searchParams] = useSearchParams()
-    const query = searchParams.get("checkout");
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
     const fetchCatalog = useMemo(() => {
         const fetchData = async () => {
             try {
@@ -26,21 +25,27 @@ const HomePage = () => {
         }
         return fetchData();
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart])
     if (!catalog) return <p>Loading ... </p>
     return (
         <div className='homepage'>
             <Header setOpenCart={setOpenCart} openCart={openCart}/>
-            <Hero />
-            <Cart openCart={openCart}/>
-            <div className='homepage__main'>
-                <FilterBar />
-                <section className='suggestions'>
-                    <h2>Featured products</h2>
-                    <div className='suggestions__cont'>
-                        {catalog.map(item => <Item key={item.id} item={item} query={query}/> )}
-                    </div>
-                </section>
-                
+            <div className='homepage__cont'>
+                <Hero />
+                <Cart openCart={openCart} cart={cart} setCart={setCart}/>
+                <div className='homepage__main'>
+                    <FilterBar catalog={catalog}/>
+                    <section className='suggestions'>
+                        <h2>Featured products</h2>
+                        <div className='suggestions__cont'>
+                            {catalog.map(item => <Item key={item.id} item={item} setCart={setCart} cart={cart}/> )}
+                        </div>
+                    </section>
+                    
+                </div>
             </div>
         </div>
   )
