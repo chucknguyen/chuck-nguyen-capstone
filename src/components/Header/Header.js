@@ -8,7 +8,6 @@ import { faStore } from '@fortawesome/free-solid-svg-icons/faStore'
 import './Header.scss'
 const Header = ({setOpenCart, openCart}) => {
     const navigate = useNavigate();
-    console.log(openCart);
   return (
     <nav className='nav'>
         <div className='nav__cont'>

@@ -17,8 +17,8 @@ const HomePage = () => {
     const fetchCart = async () => {
         try {
             const response = await axios.get('http://localhost:8080/cart', { headers: { Authorization: `Bearer ${JWTtoken}` } });
-            const data = response.data;
-            setCart(data);
+            const data = response.data.existing;
+            setCart({items:data});
         } catch (error) {
             console.error(error)
         }
@@ -40,11 +40,14 @@ const HomePage = () => {
 
     useEffect(() => {
         if (JWTtoken) {
-            setIsLoggedIn(true);
-            fetchCart();
+          setIsLoggedIn(true);
+          fetchCart();
         }
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }, [cart])
+      }, [JWTtoken]);
+    
+    useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
     if (!catalog) return <p>Loading ... </p>
     return (
         <div className='homepage'>

@@ -60,7 +60,7 @@ const Cart = ({openCart,cart,setCart}) => {
         <aside className={`cart ${openCart ? 'cart--open' : 'cart--closed'}`}>
             <h2 className='cart__header'>Your Cart</h2>
             <div className='cart__cont'>
-                {cart.items.length>0 ?cart.items.map(item => 
+                {cart?.items?.length>0 ?cart.items.map(item => 
                 <article className='cart__item' key={item.id}>
                     <img src={item.media[0]} className='cart__img'></img>
                     <div className='cart__info'>
@@ -72,7 +72,7 @@ const Cart = ({openCart,cart,setCart}) => {
                 </article>) : <h3>No items in your cart</h3>}
             </div>
             <div className='cart__total'>
-                <h3 className='cart__total-header'>Subtotal: ${cart ? cart.items.reduce((acc, item) => acc + item.price * item.qty, 0) : 0}</h3>
+                <h3 className='cart__total-header'>Subtotal: ${cart ? cart?.items?.reduce((acc, item) => acc + item.price * item.qty, 0) : 0}</h3>
                 <button className='cart__btn'>Checkout</button>
             </div>
         </aside>
