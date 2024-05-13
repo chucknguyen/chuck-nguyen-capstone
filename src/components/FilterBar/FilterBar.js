@@ -15,8 +15,10 @@ const FilterBar = ({catalog}) => {
             <h2 className='aside__header'>Find your items</h2>
             <div className='aside__search'>
                 <input type="text" placeholder='Search...' ref={search} onChange={() => setSearchValue(search.current.value)} className='aside__search-input'/>
+                <div className='aside__search-results'>
                 {searchValue && catalog.filter(item => item.item_name && item.item_name.toLowerCase().includes(searchValue.toLowerCase())).map(item => (
                     <Link to={`/item/${item.id}`} key={item.id} className='aside__search-link'>{item.item_name}</Link>))}
+                </div>
             </div>
             <form className='aside__form'>
                 <label className='aside__form-label'>Type
@@ -34,8 +36,8 @@ const FilterBar = ({catalog}) => {
                     </select>
                 </label>
                 <div className='aside__form-label'>
-                    <h3>Price Range</h3>
-                    <p>{value[0]} - {value[1]}</p>
+                    <h3 className='aside__form-price'>Price Range</h3>
+                    <p className='aside__form-range'>${value[0]} - ${value[1]}</p>
                     <Slider
                         className='slider'
                         min={min}

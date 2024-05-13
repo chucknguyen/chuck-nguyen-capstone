@@ -10,6 +10,7 @@
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
     border-radius: 0.5rem;
     width: 20%;
+    position: relative;
     &__header {
         width: 100%;
         text-align: center;
@@ -21,6 +22,7 @@
         width: 100%;
         border: solid 1px silver;
         border-radius: 0.5rem;
+        position: relative;
         &-input {
             border-radius: 0.5rem;
             border: none;
@@ -36,6 +38,10 @@
             &:focus {
                 outline: none;
             }
+        }
+        &-results {
+            display: flex;
+            flex-direction: column;
         }
         &-link {
             text-decoration: none;
@@ -68,6 +74,12 @@
                 font-size: .875rem;
                 line-height: 1.375rem;
             }
+        }
+        &-price {
+            margin-bottom: 0;
+        }
+        &-range {
+            margin-bottom: 0.5rem;
         }
     }
     .slider {
@@ -104,6 +116,10 @@
         @include media(tablet,desktop) {
             font-size: .875rem;
             line-height: 1.375rem;
+        }
+        &--filter {
+            width: 100%;
+            margin-top: 1rem;
         }
     }
 }

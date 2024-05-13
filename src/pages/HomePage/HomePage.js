@@ -12,6 +12,18 @@ const HomePage = () => {
     const [catalog, setCatalog] = useState([]);
     const [openCart, setOpenCart] = useState(false);
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const JWTtoken = sessionStorage.getItem("JWTtoken");
+    const fetchCart = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/cart', { headers: { Authorization: `Bearer ${JWTtoken}` } });
+            const data = response.data;
+            setCart(data);
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    
     const fetchCatalog = useMemo(() => {
         const fetchData = async () => {
             try {
@@ -27,6 +39,10 @@ const HomePage = () => {
     }, []);
 
     useEffect(() => {
+        if (JWTtoken) {
+            setIsLoggedIn(true);
+            fetchCart();
+        }
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart])
     if (!catalog) return <p>Loading ... </p>

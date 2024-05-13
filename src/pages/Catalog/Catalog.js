@@ -2,13 +2,15 @@ import React from 'react'
 import Header from '../../components/Header/Header'
 import Cart from '../../components/Cart/Cart'
 import './Catalog.scss'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Item from '../../components/Item/Item'
 import FilterBar from '../../components/FilterBar/FilterBar'
 import axios from 'axios'
 const Catalog = () => {
   const [openCart, setOpenCart] = useState(false);
   const [catalog, setCatalog] = useState([]);
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+
   const fetchCatalog = useMemo(() => {
       const fetchData = async () => {
           try {
@@ -22,6 +24,9 @@ const Catalog = () => {
       }
       return fetchData();
   }, []);
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}, [cart])
   if (!catalog) return <p>Loading ... </p>
   return (
       <div className='catalog'>
@@ -32,12 +37,12 @@ const Catalog = () => {
               <h2 className='catalog__hero-slogan'>We have everything you need for your next adventure</h2>
             </section>
             <section className='catalog__list'>
-                <FilterBar />
+                <FilterBar catalog={catalog}/>
                 <div className='catalog__list-cont'>
-                    {catalog.map(item => <Item key={item.id} item={item}/>)}
+                    {catalog.map(item => <Item key={item.id} item={item} setCart={setCart}/>)}
                 </div>
             </section>
-            <Cart openCart={openCart}/>
+            <Cart openCart={openCart} cart={cart} setCart={setCart}/>
           </main>
       </div>
   )
