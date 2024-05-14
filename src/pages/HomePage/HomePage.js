@@ -11,7 +11,7 @@ import Header from '../../components/Header/Header'
 const HomePage = () => {
     const [catalog, setCatalog] = useState([]);
     const [openCart, setOpenCart] = useState(false);
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+    const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')));
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const JWTtoken = sessionStorage.getItem("JWTtoken");
     const fetchCart = async () => {
@@ -46,7 +46,7 @@ const HomePage = () => {
       }, [JWTtoken]);
     
     useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+        sessionStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
     if (!catalog) return <p>Loading ... </p>
     return (

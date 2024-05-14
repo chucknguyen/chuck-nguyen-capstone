@@ -6,7 +6,7 @@ const Item = ({item, setCart, setOpenCart}) => {
     const navigate = useNavigate();
     const handleAddItem = (e) => {
         e.preventDefault();
-        const currentCart = JSON.parse(localStorage.getItem('cart'));
+        const currentCart = JSON.parse(sessionStorage.getItem('cart'));
         setOpenCart(true);
         if (!currentCart) {
             const cart = {
@@ -57,7 +57,7 @@ const Item = ({item, setCart, setOpenCart}) => {
     }
     const buyNow = (e) => {
         e.preventDefault();
-        const currentCart = JSON.parse(localStorage.getItem('cart'));
+        const currentCart = JSON.parse(sessionStorage.getItem('cart'));
         if (!currentCart) {
             const cart = {
                 items: [
@@ -113,8 +113,8 @@ const Item = ({item, setCart, setOpenCart}) => {
             <div className='image-container'>
                 <img src={item.media[0]} className='item__img' alt={item.item_name} />
             </div>
-            <div className='item__cont'>
-                <h3 className='item__title'>{item.item_name}</h3>
+            <div className='item__cont' >
+                <h3 className='item__title' onClick={() => navigate(`/item/${item.id}`)}>{item.item_name}</h3>
                 <p className='item__price'>Price: ${item.price}</p>
                 <button className='item__add' onClick={handleAddItem}>Add to Cart</button>
                 <button className='item__buy' onClick={buyNow}>Buy Now</button>

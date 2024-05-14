@@ -9,7 +9,7 @@ import axios from 'axios'
 const Catalog = () => {
     const [openCart, setOpenCart] = useState(false);
     const [catalog, setCatalog] = useState([]);
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+    const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')));
 
     const fetchCatalog = useMemo(() => {
         const fetchData = async () => {
@@ -25,7 +25,7 @@ const Catalog = () => {
         return fetchData();
     }, []);
     useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    sessionStorage.setItem('cart', JSON.stringify(cart));
     }, [cart])
     if (!catalog) return <p>Loading ... </p>
     return (

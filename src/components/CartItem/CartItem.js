@@ -2,7 +2,7 @@ import React from 'react'
 import './CartItem.scss'
 const CartItem = ({cartItem, setCart}) => {
     const removeItem = (itemId) => {
-        const currentCart = JSON.parse(localStorage.getItem('cart'));
+        const currentCart = JSON.parse(sessionStorage.getItem('cart'));
         const newCart = {
             ...currentCart,
             items: currentCart.items.filter(cartItem => cartItem.id !== itemId)

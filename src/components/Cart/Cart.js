@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const Cart = ({openCart,cart,setCart}) => {
     const navigate = useNavigate();
     const addItem = (itemId) => {
-        const currentCart = JSON.parse(localStorage.getItem('cart'));
+        const currentCart = JSON.parse(sessionStorage.getItem('cart'));
         const newCart = {
             ...currentCart,
             items: currentCart.items.map(cartItem => {
@@ -24,7 +24,7 @@ const Cart = ({openCart,cart,setCart}) => {
     }
 
     const subtractItem = (itemId) => {
-        const currentCart = JSON.parse(localStorage.getItem('cart'));
+        const currentCart = JSON.parse(sessionStorage.getItem('cart'));
         const subtractedItem = currentCart.items.find(cartItem => cartItem.id === itemId);
         if (subtractedItem.qty === 1) {
             const newCart = {
@@ -51,7 +51,7 @@ const Cart = ({openCart,cart,setCart}) => {
     }
     
     const removeItem = (itemId) => {
-        const currentCart = JSON.parse(localStorage.getItem('cart'));
+        const currentCart = JSON.parse(sessionStorage.getItem('cart'));
         const newCart = {
             ...currentCart,
             items: currentCart.items.filter(cartItem => cartItem.id !== itemId)

@@ -7,7 +7,7 @@ import './StorePage.scss'
 import axios from 'axios'
 const StorePage = () => {
     const { userid } = useParams();
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+    const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')));
     const [openForm, setOpenForm] = useState(false);
     const [selectedImages, setSelectedImages] = useState([]);
     const [files, setFiles] = useState([]);
@@ -25,14 +25,14 @@ const StorePage = () => {
             console.error(error)
         }
     }
-    const fetchCatalog = useMemo(() => {
-        const fetchCatalog = async () => {
+    const fetchCatalog = async () => {
+        try {
             const response = await axios.get(`http://localhost:8080/user/${userid}/inventory`);
             setCatalog(response.data);
+        } catch (error) {
+            console.error(error)
         }
-        fetchCatalog()
-        return fetchCatalog;
-    }, [])
+    }
     const [formData, setFormData] = useState({
         item_name: '',
         user_id: userid,
@@ -45,7 +45,7 @@ const StorePage = () => {
         category: ''
     })
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
+        sessionStorage.setItem('cart', JSON.stringify(cart));
     }, [cart])
     useEffect(() => {
         checkAuth();
@@ -123,6 +123,11 @@ const StorePage = () => {
             console.error(error);
         }
     }
+
+    useEffect(() => {
+        fetchCatalog();
+    }, [])
+    if (!catalog) return <p>Loading ... </p>
     return (
         <div className='store'>
             <Header setOpenCart={setOpenCart} openCart={openCart}/>

@@ -20,6 +20,9 @@
         gap: 1rem;
         flex-wrap: nowrap;
     }
+    .suggestions {
+        width: 100%;
+    }
     .suggestions__cont {
         display: flex;
         flex-direction: column;

@@ -7,14 +7,15 @@ import Cart from '../../components/Cart/Cart';
 import './CartPage.scss'
 const CartPage = () => {
   const navigate = useNavigate();
-  const [cart,setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+  const [cart,setCart] = useState(JSON.parse(sessionStorage.getItem('cart')));
   const [openCart,setOpenCart] = useState(false);
   const proceedToCheckout = (e) => {
       e.preventDefault();
+      sessionStorage.removeItem('cart');
       navigate("/home")
   }
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    sessionStorage.setItem('cart', JSON.stringify(cart));
   }, [cart])
   if (!cart) return <p>Loading ... </p>
   return (

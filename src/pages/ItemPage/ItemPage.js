@@ -18,7 +18,7 @@ const ItemPage = () => {
   const [item, setItem] = useState(null);
   const [openCart, setOpenCart] = useState(false);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+  const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')));
   const fetchItem = async () => {
     try {
       const response = await axios.get(`http://localhost:8080/inventory/${id}`);
@@ -29,7 +29,7 @@ const ItemPage = () => {
   }
   const handleAddItem = (e) => {
     e.preventDefault();
-    const currentCart = JSON.parse(localStorage.getItem('cart'));
+    const currentCart = JSON.parse(sessionStorage.getItem('cart'));
     setOpenCart(true);
     if (!currentCart) {
       const cart = {
@@ -78,7 +78,7 @@ const ItemPage = () => {
     }
   }
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    sessionStorage.setItem('cart', JSON.stringify(cart));
   }, [cart])
   useEffect(() => {
     fetchItem();
