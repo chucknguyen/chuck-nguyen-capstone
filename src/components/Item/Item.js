@@ -1,10 +1,11 @@
 import React from 'react'
 import './Item.scss'
 import axios from 'axios'
-const Item = ({item, setCart}) => {
+const Item = ({item, setCart, setOpenCart}) => {
     const handleAddItem = (e) => {
         e.preventDefault();
         const currentCart = JSON.parse(localStorage.getItem('cart'));
+        setOpenCart(true);
         if (!currentCart) {
             const cart = {
                 items: [
