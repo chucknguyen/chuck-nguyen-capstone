@@ -173,7 +173,6 @@ const StorePage = () => {
                     </form>}
                 </section>
                 <section className='store-page__cont'>
-                    <h2>Store Catalog</h2>
                     {catalog && catalog.map((item) => <Item key={item.id} item={item} setCart={setCart} setOpenCart={setOpenCart}/>)}
                 </section>
             </div>

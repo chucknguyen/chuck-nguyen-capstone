@@ -3,13 +3,33 @@
 @use '../../styles/partials/global' as*;
 .nav {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     background-color: black;
     padding-right: 2rem;
     width: 100%;
+    gap: 1rem;
+    @include media(desktop,tablet) {
+        flex-direction: row;
+    }
+    justify-content: space-between;
     &__cont {
         display: flex;
+        flex-direction: column;
         gap: 1rem;
+        @include media(desktop,tablet) {
+            flex-direction: row;
+        }
+    }
+    &__bar {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: flex-start;
+        height: 4rem;
+        @include media(desktop,tablet) {
+            align-items: center;
+            height: auto;
+        }
     }
     &__logo {
         height: 7rem;

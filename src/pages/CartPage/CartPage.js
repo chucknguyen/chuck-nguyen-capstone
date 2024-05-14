@@ -23,7 +23,7 @@ const CartPage = () => {
       <Cart cart={cart} setCart={setCart} openCart={openCart}/>
       <section className='cont'>
         <h1 className='cont__header'>Your Cart</h1>
-        <div>
+        <div className='cont__items'>
           {cart.items.map(cartItem => <CartItem cartItem={cartItem} setCart={setCart} key={cartItem.id}/>)}
         </div>
         <h3>Total amount: ${cart ? cart?.items?.reduce((acc, item) => acc + item.price * item.qty, 0) : 0}</h3>

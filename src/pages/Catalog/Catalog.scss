@@ -3,35 +3,44 @@
 @use '../../styles/partials/global' as*;
 
 .catalog {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     width: 100%;
-    position: relative;
     &__main {
-        width: 100%;
-        z-index: 0;
-        display: flex;
         position: absolute;
-        top: 5rem;
+        top: 13rem;
+        display: flex;
         flex-direction: column;
         gap: 1rem;
+        width: 100%;
+        @include media(tablet,desktop) {
+            top: 7rem;
+        }
     }
     &__hero {
-        width: 100%;
+        width: 115%;
         background: url('../../assets/images/duong-quoc-hoang.png');
-        height: 32rem;
+        height: 30rem;
         background-size: cover;
         background-position-x: -5rem;
         background-position-y: -3rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @include media(tablet,desktop) {
+            width: 100%;
+        }
         &-slogan {
             color: turquoise;
             padding-left: 4rem;
             margin: 0;
-            width: 40%;
+            margin-top: 1rem;
+            width: 80%;
+            @include media(tablet,desktop) {
+                width: 40%;
+            }
         }
         &-header {
             color: turquoise;
@@ -40,13 +49,21 @@
         }
     }
     &__list {
-        width: 100%;
         display: flex;
         gap: 1rem;
+        flex-wrap: nowrap;
+        width: 110%;
+        @include media(tablet,desktop) {
+            width: 100%;
+        }
         &-cont {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 1rem;
+            @include media(tablet,desktop) {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
         }
     }
 }

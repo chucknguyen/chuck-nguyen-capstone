@@ -1,3 +1,6 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/global' as*;
 .cart {
     display: flex;
     flex-direction: column;
@@ -8,7 +11,10 @@
     border-bottom-left-radius: 0.5rem;
     position: fixed;
     right: 0;
-    top: 7.2rem;
+    top: 14.6rem;
+    @include media(tablet,desktop) {
+        top: 7.2rem;
+    }
     z-index: 3;
     &--open {
         visibility: visible;

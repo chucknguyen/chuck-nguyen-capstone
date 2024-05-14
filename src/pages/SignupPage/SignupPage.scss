@@ -29,9 +29,9 @@
         box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
         background-color: white;
         gap: 1rem;
-        width: 40%;
+        width: 90%;
         @include media(tablet,desktop) {
-            width: 30%;
+            width: 60%;
         }
     } 
     &__logo {

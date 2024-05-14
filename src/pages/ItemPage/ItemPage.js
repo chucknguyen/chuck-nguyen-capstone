@@ -119,7 +119,7 @@ const ItemPage = () => {
                         navigation={true}>
                   {item.media.map((media, index) => 
                       <SwiperSlide key={index}>
-                          <img src={media} alt='pic' className='cont__img' />
+                          <img src={media} alt='pic' className='cont__img cont__img--thumb' />
                       </SwiperSlide>
                   )}
                 </Swiper>
@@ -131,7 +131,7 @@ const ItemPage = () => {
             <h3 className='cont__details'>Brand: {item.brand}</h3>
             <h3 className='cont__details'>Type: {item.type}</h3>
             <h3 className='cont__details'>Description: {item.description}</h3>
-            <button onClick={handleAddItem} className='cont__btn'>Add to cart</button>
+            <button onClick={handleAddItem} className='cont__btn cont__btn--add'>Add to cart</button>
             <button className='cont__btn'>Buy now</button>
           </div>
         </div>

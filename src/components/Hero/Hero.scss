@@ -5,17 +5,19 @@
     background: url('../../assets/images/c74906cf0f025b3c3578d942e24eca2a_original.jpg');
     height: 32rem;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     &__header {
-        color: #fff;
+        color: turquoise;
         padding-left: 4rem;
         z-index: 1;
         margin: 0;
     }
     &__slogan {
-        color: #fff;
+        color: turquoise;
         padding-left: 4rem;
         z-index: 1;
     }
@@ -26,6 +28,9 @@
     &__container {
         display: flex;
         flex-direction: column;
-        width: 50%;
+        width: 80%;
+        @include media(tablet,desktop) {
+            width: 60%;
+        }
     }
 }
