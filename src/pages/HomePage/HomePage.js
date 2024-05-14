@@ -60,7 +60,7 @@ const HomePage = () => {
                     <section className='suggestions'>
                         <h2>Featured products</h2>
                         <div className='suggestions__cont'>
-                            {catalog.map(item => <Item key={item.id} item={item} setCart={setCart} cart={cart}/> )}
+                            {catalog.map(item => <Item key={item.id} item={item} setCart={setCart} cart={cart} setOpenCart={setOpenCart}/> )}
                         </div>
                     </section>
                     

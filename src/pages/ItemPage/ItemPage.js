@@ -8,9 +8,7 @@ import 'swiper/css/effect-cube';
 import 'swiper/css';
 import 'swiper/css/thumbs';
 import 'swiper/css/navigation';
-import pic from '../../assets/images/jflowers-1.jpg';
 import Cart from '../../components/Cart/Cart';
-import pic2 from '../../assets/images/Ko-Web.jpg'
 import axios from 'axios';
 import { register } from 'swiper/element/bundle';
 register();

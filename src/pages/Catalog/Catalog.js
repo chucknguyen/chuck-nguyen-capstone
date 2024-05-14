@@ -39,7 +39,7 @@ const Catalog = () => {
                 <section className='catalog__list'>
                     <FilterBar catalog={catalog}/>
                     <div className='catalog__list-cont'>
-                        {catalog.map(item => <Item key={item.id} item={item} setCart={setCart}/>)}
+                        {catalog.map(item => <Item key={item.id} item={item} setCart={setCart} setOpenCart={setOpenCart}/>)}
                     </div>
                 </section>
                 <Cart openCart={openCart} cart={cart} setCart={setCart}/>

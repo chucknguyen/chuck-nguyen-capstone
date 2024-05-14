@@ -18,6 +18,7 @@ function App() {
         <Route path='/signup' element={<SignupPage />} />
         <Route path='/item/:id' element={<ItemPage />} />
         <Route path='/store/:userid' element={<StorePage />} />
+        <Route path='/cart' element={<CartPage />} />
         <Route path='*' element={<HomePage />} />
       </Routes>
     </BrowserRouter>

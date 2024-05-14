@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import './Cart.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
 const Cart = ({openCart,cart,setCart}) => {
+    const navigate = useNavigate();
     const addItem = (itemId) => {
         const currentCart = JSON.parse(localStorage.getItem('cart'));
         const newCart = {
@@ -56,6 +58,10 @@ const Cart = ({openCart,cart,setCart}) => {
         }
         setCart(newCart);
     }
+    const proceedToCheckout = (e) => {
+        e.preventDefault();
+        navigate("/cart")
+    }
     return (
         <aside className={`cart ${openCart ? 'cart--open' : 'cart--closed'}`}>
             <h2 className='cart__header'>Your Cart</h2>
@@ -73,7 +79,7 @@ const Cart = ({openCart,cart,setCart}) => {
             </div>
             <div className='cart__total'>
                 <h3 className='cart__total-header'>Subtotal: ${cart ? cart?.items?.reduce((acc, item) => acc + item.price * item.qty, 0) : 0}</h3>
-                <button className='cart__btn'>Checkout</button>
+                <button className='cart__btn' onClick={proceedToCheckout}>Checkout</button>
             </div>
         </aside>
     )

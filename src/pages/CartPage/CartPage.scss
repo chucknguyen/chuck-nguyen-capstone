@@ -1,0 +1,15 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/global' as*;
+
+.cart-page {
+    position: relative;
+    .cont {
+        position: absolute;
+        top: 7rem;
+        padding-left: 5rem;
+        &__title {
+            margin: 0;
+        }
+    }
+}
