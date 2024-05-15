@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import logo from '../../assets/logos/logo.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons/faCartShopping'
@@ -15,14 +15,14 @@ const Header = ({setOpenCart, openCart}) => {
     const checkAuth = async () => {
         try {
             const response = await axios.get('http://localhost:8080/user/auth', { headers: { Authorization: `Bearer ${JWTtoken}` } });
-            setUserId(response.data);
+            navigate(`/store/${response.data}`);
         } catch (error) {
-            console.error(error)
-        }
+            navigate('/login');        
+          }
     }
-    useEffect(() => {
-        checkAuth();
-    }, [])
+    const handleAccount = () => {
+      checkAuth();
+    }
     return (
       <nav className='nav'>
           <div className='nav__cont'>
@@ -31,11 +31,11 @@ const Header = ({setOpenCart, openCart}) => {
           </div>
           <div className='nav__bar'> 
             <div className='nav__icon-cont'> 
-              <FontAwesomeIcon icon={faStore} className='nav__icon fa-2x' alt='Your Store' onClick={() => navigate(`/store/${userId}`)}/>
+              <FontAwesomeIcon icon={faStore} className='nav__icon fa-2x' alt='Your Store' onClick={handleAccount}/>
               <p className='nav__icon-text'>Your Store</p>
             </div>
             <div className='nav__icon-cont'>
-              <FontAwesomeIcon icon={faUser} className='nav__icon fa-2x' alt='Your Account' onClick={() => navigate(`/login`)}/>
+              <FontAwesomeIcon icon={faUser} className='nav__icon fa-2x' alt='Your Account' onClick={() => navigate('/login')}/>
               <p className='nav__icon-text'>Your Account</p>
             </div>
             <div className='nav__icon-cont'>

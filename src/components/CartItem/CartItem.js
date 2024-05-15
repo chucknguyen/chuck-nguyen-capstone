@@ -8,7 +8,6 @@ const CartItem = ({cartItem, setCart}) => {
             items: currentCart.items.filter(cartItem => cartItem.id !== itemId)
         }
         setCart(newCart);
-        console.log(newCart);
     }
     return (
         <article className='cart-item'>

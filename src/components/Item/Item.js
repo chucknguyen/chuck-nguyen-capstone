@@ -1,7 +1,7 @@
 import React from 'react'
 import './Item.scss'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 const Item = ({item, setCart, setOpenCart}) => {
     const navigate = useNavigate();
     const handleAddItem = (e) => {
@@ -114,10 +114,15 @@ const Item = ({item, setCart, setOpenCart}) => {
                 <img src={item.media[0]} className='item__img' alt={item.item_name} />
             </div>
             <div className='item__cont' >
-                <h3 className='item__title' onClick={() => navigate(`/item/${item.id}`)}>{item.item_name}</h3>
-                <p className='item__price'>Price: ${item.price}</p>
-                <button className='item__add' onClick={handleAddItem}>Add to Cart</button>
-                <button className='item__buy' onClick={buyNow}>Buy Now</button>
+                <div>
+                    <h3 className='item__title' onClick={() => navigate(`/item/${item.id}`)}>{item.item_name}</h3>
+                    <Link to={`/store/${item.user_id}`} className='item__store'>Check the store</Link>
+                    <p className='item__price'>Price: ${item.price}</p>
+                </div>
+                <div className='item__btns'>
+                    <button className='item__add' onClick={handleAddItem}>Add to Cart</button>
+                    <button className='item__buy' onClick={buyNow}>Buy Now</button>
+                </div>
             </div>
         </article>
         

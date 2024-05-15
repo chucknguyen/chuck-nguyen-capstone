@@ -3,7 +3,6 @@ import Hero from '../../components/Hero/Hero'
 import axios from 'axios'
 import { useState, useMemo, useEffect } from 'react'
 import Item from '../../components/Item/Item'
-import { useSearchParams } from 'react-router-dom'
 import FilterBar from '../../components/FilterBar/FilterBar'
 import Cart from '../../components/Cart/Cart'
 import './HomePage.scss'
@@ -14,16 +13,6 @@ const HomePage = () => {
     const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')));
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const JWTtoken = sessionStorage.getItem("JWTtoken");
-    const fetchCart = async () => {
-        try {
-            const response = await axios.get('http://localhost:8080/cart', { headers: { Authorization: `Bearer ${JWTtoken}` } });
-            const data = response.data.existing;
-            setCart({items:data});
-        } catch (error) {
-            console.error(error)
-        }
-    }
-    
     const fetchCatalog = useMemo(() => {
         const fetchData = async () => {
             try {
@@ -41,7 +30,6 @@ const HomePage = () => {
     useEffect(() => {
         if (JWTtoken) {
           setIsLoggedIn(true);
-          fetchCart();
         }
       }, [JWTtoken]);
     
@@ -60,7 +48,7 @@ const HomePage = () => {
                     <section className='suggestions'>
                         <h2>Featured products</h2>
                         <div className='suggestions__cont'>
-                            {catalog.map(item => <Item key={item.id} item={item} setCart={setCart} cart={cart} setOpenCart={setOpenCart}/> )}
+                            {catalog.map(item => <Item key={item.id} item={item} setCart={setCart} setOpenCart={setOpenCart}/> )}
                         </div>
                     </section>
                     

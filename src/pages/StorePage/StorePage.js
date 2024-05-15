@@ -49,7 +49,6 @@ const StorePage = () => {
     }, [cart])
     useEffect(() => {
         checkAuth();
-        console.log(isLoggedIn)
     }, [isLoggedIn])
     const onSelectFile = (e) => {
         setFiles(e.target.files);
@@ -77,10 +76,7 @@ const StorePage = () => {
             });
             if (response.data) {
                 const updatedMedia = response.data; 
-                await setFormData({
-                    ...formData,
-                    media: updatedMedia
-                });
+                return updatedMedia;
             }
         } catch (error) {
             console.error(error);
@@ -96,14 +92,13 @@ const StorePage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await handleUpload();
+        const updatedMedia = await handleUpload();
         const { item_name, price, description, quantity, media, brand, type, category } = formData;
-        if (!item_name || !price || !description|| !quantity || !media || !brand || !type || !category) {
-            console.log(formData)
+        if (!item_name || !price || !description|| !quantity || !brand || !type || !category) {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8080/inventory', formData);
+            const response = await axios.post('http://localhost:8080/inventory', { ...formData, media: updatedMedia });
             if (response.data) {
                 setFormData({
                     item_name: '',
@@ -126,7 +121,7 @@ const StorePage = () => {
 
     useEffect(() => {
         fetchCatalog();
-    }, [])
+    }, [handleSubmit])
     if (!catalog) return <p>Loading ... </p>
     return (
         <div className='store'>
