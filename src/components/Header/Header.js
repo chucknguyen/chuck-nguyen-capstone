@@ -15,7 +15,7 @@ const Header = ({setOpenCart, openCart}) => {
     const checkAuth = async () => {
         try {
             const response = await axios.get('http://localhost:8080/user/auth', { headers: { Authorization: `Bearer ${JWTtoken}` } });
-            navigate(`/store/${response.data}`);
+            if (response.data) navigate(`/store/${response.data}`);
         } catch (error) {
             navigate('/login');        
           }
